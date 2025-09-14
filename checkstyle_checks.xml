@@ -23,11 +23,11 @@
     <property name="optional" value="true"/>
   </module>
 
-	<module name="LineLength">
+  <module name="LineLength">
     <property name="fileExtensions" value="java"/>
     <property name="max" value="200"/>
     <property name="ignorePattern"
-             value="^package.*|^import.*|href\s*=\s*&quot;[^&quot;]*&quot;|http://|https://|ftp://"/>
+               value="^package.*|^import.*|href\s*=\s*&quot;[^&quot;]*&quot;|http://|https://|ftp://"/>
   </module>
 
   <module name="TreeWalker">
