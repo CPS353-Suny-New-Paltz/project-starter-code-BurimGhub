@@ -10,3 +10,4 @@ The compute engine will convert a positive integer to its English word represent
    **Example Output:** With a pair delimiter of ' , ' and a key-value delimiter of ' : ' the output would be:
 
       6:six,21:twenty one,105:one hundred five,1000000:one million
+![System Diagram](https://github.com/CPS353-Suny-New-Paltz/project-starter-code-BurimGhub/blob/feature/images/SystemDiagram.png)
