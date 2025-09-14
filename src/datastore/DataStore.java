@@ -2,6 +2,7 @@ package datastore;
 
 public interface DataStore {
 
-     insertRequest(DataRequest dataRequest);
+     DataStoreResponse insertRequest(DataRequest dataRequest);
 
+     byte[] loadData(int dataId);
 }
