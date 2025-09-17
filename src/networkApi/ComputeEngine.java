@@ -1,4 +1,4 @@
-package networkApi;
+package networkAPI;
 import project.annotations.NetworkAPI;
 
 /**

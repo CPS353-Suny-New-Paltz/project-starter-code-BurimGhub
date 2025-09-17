@@ -1,4 +1,4 @@
-package networkApi;
+package networkAPI;
 import project.annotations.NetworkAPIPrototype;
 /**
  * This is a prototype of the Compute Engine Network API
