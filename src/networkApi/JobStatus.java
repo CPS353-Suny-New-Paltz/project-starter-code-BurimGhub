@@ -1,4 +1,4 @@
-package networkapi;
+package networkApi;
 
 /**
  * This enum shows what state a job is in

@@ -1,4 +1,4 @@
-package networkapi;
+package networkApi;
 
 /**
  * This interface is used to give information about what happened

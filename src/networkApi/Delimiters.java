@@ -1,4 +1,4 @@
-package networkapi;
+package networkApi;
 /**
  * This class represents the delimiters which is a pair of characters used to
  * separate value pairs and their elements in a string.
