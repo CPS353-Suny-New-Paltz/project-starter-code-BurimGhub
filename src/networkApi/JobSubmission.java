@@ -1,4 +1,4 @@
-package networkAPI;
+package networkapi;
 
 /**
  * This class holds the information about where a job
