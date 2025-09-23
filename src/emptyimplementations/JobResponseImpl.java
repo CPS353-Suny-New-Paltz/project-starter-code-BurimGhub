@@ -4,7 +4,7 @@ import networkapi.JobResponse;
 import networkapi.JobStatus;
 
 public class JobResponseImpl implements JobResponse {
-
+	// All methods return default values indication failure or null.
     @Override
     public String getJobId() {
         return null;
