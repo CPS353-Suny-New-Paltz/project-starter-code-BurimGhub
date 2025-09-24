@@ -4,17 +4,22 @@ import processapi.IntegerStream;
 import processapi.ReadResponse;
 
 public class ReadResponseImpl implements ReadResponse {
+    private final boolean success;
+    private final IntegerStream stream;
 
-	@Override
-	public boolean isSuccess() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    // Add this constructor
+    public ReadResponseImpl(boolean success, IntegerStream stream) {
+        this.success = success;
+        this.stream = stream;
+    }
 
-	@Override
-	public IntegerStream getIntegerStream() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public boolean isSuccess() {
+        return this.success;
+    }
 
+    @Override
+    public IntegerStream getIntegerStream() {
+        return this.stream;
+    }
 }
