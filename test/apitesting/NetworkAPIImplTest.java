@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
+import conceptualapi.ComputationApi;
 import emptyimplementations.NetWorkAPIImpl;
 import networkapi.JobResponse;
 import networkapi.JobStatus;
@@ -19,12 +20,15 @@ public class NetworkAPIImplTest {
 
     @Mock
     private DataStorageAPI mockDataStorageAPI;
+    
+    @Mock
+    private ComputationApi mockComputationApi;
 
     private NetWorkAPIImpl networkAPI;
     @BeforeEach
     public void setUp() {
         MockitoAnnotations.openMocks(this);
-        networkAPI = new NetWorkAPIImpl(mockDataStorageAPI);
+        networkAPI = new NetWorkAPIImpl(mockDataStorageAPI, mockComputationApi);
     }
 
     @Test
