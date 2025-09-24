@@ -4,10 +4,12 @@ import networkapi.JobResponse;
 import networkapi.JobStatus;
 
 public class JobResponseImpl implements JobResponse {
-	// All methods return default values indication failure or null.
+    public JobResponseImpl() {
+
+    }
     @Override
     public String getJobId() {
-        return null;
+        return ""; // Return empty string instead of null
     }
 
     @Override
@@ -17,12 +19,11 @@ public class JobResponseImpl implements JobResponse {
 
     @Override
     public String getMessage() {
-        return null;
+        return "Operation failed."; // Return default message instead of null
     }
 
     @Override
     public JobStatus getStatus() {
-        return null;
+        return JobStatus.FAILED; // Return a default status instead of null
     }
-
 }
