@@ -9,12 +9,12 @@ import conceptualapi.ComputeResponse;
 public class ConceptualAPIImpl implements ComputationApi {
 
 	// Arrays for number-to-words conversion
-	String[] UNITS = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
+	String[] units = { "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven",
 			"twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
 
-	String[] TENS = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+	String[] tens = { "", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
 
-	String[] SCALES = { "", "thousand", "million", "billion" };
+	String[] scales = { "", "thousand", "million", "billion" };
 
 	// Implementation of the compute method
 	@Override
@@ -37,34 +37,37 @@ public class ConceptualAPIImpl implements ComputationApi {
 	// Method to convert number to words
 	public String convertNumberToWords(int number) {
 		// Handle zero and negative numbers
-		if (number == 0)
+		if (number == 0) {
 			return "zero";
-		if (number < 0)
+		}
+		if (number < 0) {
 			return "negative " + convertNumberToWords(-number);
+		}
 		return convertPositiveNumber(number).trim();
+
 	}
 
 	// Helper method to convert positive numbers to words
 	public String convertPositiveNumber(int number) {
 		// Handle units and teens
 		if (number < 20) {
-			return UNITS[number];
+			return units[number];
 		}
 		// Handle tens
 		if (number < 100) {
-			return TENS[number / 10] + (number % 10 != 0 ? "-" + UNITS[number % 10] : "");
+			return tens[number / 10] + (number % 10 != 0 ? "-" + units[number % 10] : "");
 		}
 		// Handle hundreds
 		if (number < 1000) {
-			return UNITS[number / 100] + " hundred"
+			return units[number / 100] + " hundred"
 					+ (number % 100 != 0 ? " " + convertPositiveNumber(number % 100) : "");
 		}
 
 		// Handle thousands, millions, billions
-		for (int i = SCALES.length - 1; i >= 1; i--) {
+		for (int i = scales.length - 1; i >= 1; i--) {
 			int scale = (int) Math.pow(1000, i);
 			if (number >= scale) {
-				return convertPositiveNumber(number / scale) + " " + SCALES[i]
+				return convertPositiveNumber(number / scale) + " " + scales[i]
 						+ (number % scale != 0 ? " " + convertPositiveNumber(number % scale) : "");
 			}
 		}
