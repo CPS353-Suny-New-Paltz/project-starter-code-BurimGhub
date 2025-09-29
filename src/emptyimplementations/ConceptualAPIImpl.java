@@ -19,19 +19,15 @@ public class ConceptualAPIImpl implements ComputationApi {
 	// Implementation of the compute method
 	@Override
 	public ComputeResponse compute(ComputeRequest request) {
-		try {
-			int number = request.getNumber();
-
-			if (number <= 0) {
-				return new ComputeResponse(ComputationResultCode.INVALID_INPUT);
-			}
-
-			String words = convertNumberToWords(number);
-			return new ComputeResponse(words);
-
-		} catch (Exception e) {
-			return new ComputeResponse(ComputationResultCode.ERROR);
-		}
+	    try {
+	        if (request == null || request.getNumber() <= 0) {
+	            return new ComputeResponse(ComputationResultCode.INVALID_INPUT);
+	        }
+	        String words = convertPositiveNumber(request.getNumber()).trim();
+	        return new ComputeResponse(words);
+	    } catch (Exception e) {
+	        return new ComputeResponse(ComputationResultCode.ERROR);
+	    }
 	}
 
 	// Method to convert number to words
