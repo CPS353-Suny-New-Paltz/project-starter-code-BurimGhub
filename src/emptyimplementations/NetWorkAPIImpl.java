@@ -92,5 +92,6 @@ public class NetWorkAPIImpl implements ComputeEngine {
     public JobResponse cancelJob(String jobId) {
         // In a real implementation, job cancellation logic would be applied
         return new JobResponseImpl(jobId, true, "Job cancelled", JobStatus.CANCELLED);
+        
     }
 }
