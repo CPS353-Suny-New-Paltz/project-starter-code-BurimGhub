@@ -27,7 +27,7 @@ public class NetWorkAPIImpl implements ComputeEngine {
         this.dataStore = dataStore;
         this.computation = computation;
     }
-    //
+
     @Override
     public JobResponse submitJob(JobSubmission request) {
         try {
@@ -59,10 +59,6 @@ public class NetWorkAPIImpl implements ComputeEngine {
                 if (computeResponse.isSuccess()) {
                     // Delimiters Logic
                     results.add(number + String.valueOf(separator) + computeResponse.getResult());
-                
-                if (computeResponse.isSuccess()) {
-                    // Store result in "number:words" format
-                    results.add(number + ":" + computeResponse.getResult());
                 } else {
                     return new JobResponseImpl(jobId, false, "Computation failed for number: " + number,
                             JobStatus.FAILED);
@@ -78,7 +74,7 @@ public class NetWorkAPIImpl implements ComputeEngine {
             }
             // Return successful job response
             return new JobResponseImpl(jobId, true, "Job completed successfully", JobStatus.COMPLETED);
-              
+
         } catch (Exception e) {
             // Handle exceptions and return failure response
             String jobId = UUID.randomUUID().toString();
