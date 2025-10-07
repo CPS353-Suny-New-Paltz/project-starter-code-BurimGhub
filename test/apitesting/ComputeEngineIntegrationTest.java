@@ -1,7 +1,7 @@
 package apitesting;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Tag;
+
 import org.junit.jupiter.api.Test;
 
 import conceptualapi.ComputationApi;
@@ -20,7 +20,6 @@ import java.util.List;
 class ComputeEngineIntegrationTest {
 
     @Test
-    @Tag("FailingTest")
     void submitJob() {
 
         // Define the input data and create your new config objects.

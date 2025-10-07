@@ -20,11 +20,5 @@ public enum JobStatus {
 	JobStatus(boolean check) {
 		this.check = check;
 	}
-	
-	/**
-	 * Returns true if the job is done running
-	 */
-	public boolean check() {
-		return check;
-	}
+
 }

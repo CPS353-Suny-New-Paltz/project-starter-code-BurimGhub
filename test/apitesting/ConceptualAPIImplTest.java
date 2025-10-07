@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockitoAnnotations;
 
@@ -25,7 +24,6 @@ public class ConceptualAPIImplTest {
 	}
 
 	@Test
-	@Tag("FailingTest")
 	public void testCompute() {
 		// Create a compute request
 		int numberToCompute = 12345;
@@ -41,7 +39,6 @@ public class ConceptualAPIImplTest {
 	}
 
 	@Test
-	@Tag("FailingTest")
 	public void testComputeWithValidNumber() {
 		// Test with a valid number
 		ComputeRequest request = new ComputeRequest(1);
@@ -65,7 +62,6 @@ public class ConceptualAPIImplTest {
     }
 
 	@Test
-	@Tag("FailingTest")
 	public void testComputeWithLargeNumber() {
 		// Test with a large number
 		ComputeRequest request = new ComputeRequest(1000000);
