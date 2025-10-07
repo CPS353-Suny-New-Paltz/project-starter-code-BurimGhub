@@ -73,5 +73,12 @@ public class ConceptualAPIImplTest {
 		// This will fail with current empty implementation
 		assertTrue(response.isSuccess());
 	}
-
+	// Additional tests For checkpoint 4 Part 5:
+    @Test
+    public void testEdgeCaseNumbers() {
+        // Test boundary values
+        ComputeResponse newresponse = conceptualAPI.compute(new ComputeRequest(9999));
+        assertTrue(newresponse.isSuccess());
+        assertEquals("nine thousand nine hundred ninety-nine", newresponse.getResult());
+    }
 }
