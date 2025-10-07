@@ -48,10 +48,13 @@ public class ProcessAPIImpl implements DataStorageAPI {
 
     @Override
     public WriteResponse writeData(WriteRequest request) {
-        // Write the results to the specified destination file.
         try {
             Path path = Paths.get(request.getDestination());
-            Files.write(path, request.getResults());
+
+            // Join all results into a single comma-separated line
+            String singleLine = String.join(",", request.getResults());
+            Files.write(path, singleLine.getBytes());
+
             return new WriteResponseImpl(true);
         } catch (IOException e) {
             return new WriteResponseImpl(false);
