@@ -36,7 +36,7 @@ public class ExceptionHandlingTest {
 	}
 
 	@Test
-	public void testJobFailsWithNonExistentInputFile() {
+	public void testNonExistentInputFile() {
 		// Define paths for a non-existent input file and a valid output file.
 		Path nonExistentInput = tempDir.resolve("nonexistent/path.txt");
 		Path outputFile = tempDir.resolve("output.txt");
@@ -52,7 +52,7 @@ public class ExceptionHandlingTest {
 	}
 
 	@Test
-	public void testJobHandlesLargeNumberInput() throws IOException {
+	public void testLargeNumberInput() throws IOException {
 		// Create a temporary input file with a large number.
 		Path inputFile = tempDir.resolve("input.txt");
 		Path outputFile = tempDir.resolve("output.txt");
@@ -68,7 +68,7 @@ public class ExceptionHandlingTest {
 	}
 
 	@Test
-	public void testJobFailsWithNullRequest() {
+	public void testNullRequest() {
 		// Test that a null job submission is handled gracefully.
 		JobResponse response = computeEngine.submitJob(null);
 
@@ -77,16 +77,16 @@ public class ExceptionHandlingTest {
 		assertTrue(response.getMessage().contains("cannot be null"));
 	}
 
-    @Test
-    public void testJobFailsWithEmptyInputSource() {
-        // Test that an empty input source is handled gracefully.
-        Path outputFile = tempDir.resolve("output.txt");
-        JobSubmission request = new JobSubmission("", outputFile.toString());
+	@Test
+	public void testEmptyInputSource() {
+		// Test that an empty input source is handled gracefully.
+		Path outputFile = tempDir.resolve("output.txt");
+		JobSubmission request = new JobSubmission("", outputFile.toString());
 
-        JobResponse response = computeEngine.submitJob(request);
+		JobResponse response = computeEngine.submitJob(request);
 
-        assertNotNull(response);
-        assertFalse(response.isSuccess());
-        assertTrue(response.getMessage().contains("cannot be null or empty"));
-    }
+		assertNotNull(response);
+		assertFalse(response.isSuccess());
+		assertTrue(response.getMessage().contains("cannot be null or empty"));
+	}
 }
