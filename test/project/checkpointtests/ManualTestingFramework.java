@@ -12,8 +12,8 @@ import processapi.DataStorageAPI;
 
 public class ManualTestingFramework {
 
-    public static final String INPUT = "Resources/Input.txt";
-    public static final String OUTPUT = "Resources/Output.txt";
+    public static final String INPUT = "Resources/testinput.txt";
+    public static final String OUTPUT = "Resources/testoutput.txt";
 
     public static void main(String[] args) {
         // Instantiate real implementations of all 3 APIs
