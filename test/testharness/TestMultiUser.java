@@ -1,4 +1,4 @@
-package testHarness;
+package testharness;
 
 import java.io.File;
 import java.io.IOException;
@@ -93,9 +93,15 @@ public class TestMultiUser {
             TestUser testUser = new TestUser(coordinator);
             testUser.run(testOutput.getCanonicalPath());
             
+            // Verify output file was created and has content
+            Assertions.assertTrue(testOutput.exists());
+            
             List<String> outputLines = Files.readAllLines(testOutput.toPath());
             Assertions.assertFalse(outputLines.isEmpty());
             
+            // Verify the output contains expected format (number;words)
+            String output = String.join("", outputLines);
+            Assertions.assertTrue(output.contains(";"));
         } catch (Exception e) {
             Assertions.fail("Smoke test failed: " + e.getMessage());
         }
