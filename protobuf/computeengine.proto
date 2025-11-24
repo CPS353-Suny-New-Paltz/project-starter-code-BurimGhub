@@ -1,0 +1,34 @@
+option java_multiple_files = true;
+option java_package = "grpc.computeengine";
+option java_outer_classname = "ComputeEngineProto";
+
+package computeengine;
+
+// Network API (Compute Engine Service)
+service ComputeEngineService {
+  rpc SubmitJob (JobRequest) returns (JobResponse);
+  rpc GetJobStatus (JobStatusRequest) returns (JobResponse);
+  rpc CancelJob (JobCancelRequest) returns (JobResponse);
+}
+
+message JobRequest {
+  optional string input_source = 1;
+  optional string output_source = 2;
+  optional string pair_delimiter = 3 [default = ","];
+  optional string key_value_delimiter = 4 [default = ":"];
+}
+
+message JobStatusRequest {
+  required string job_id = 1;
+}
+
+message JobCancelRequest {
+  required string job_id = 1;
+}
+
+message JobResponse {
+  required string job_id = 1;
+  required bool success = 2;
+  optional string message = 3;
+  optional string status = 4;  // COMPLETED, FAILED, CANCELLED, etc.
+}

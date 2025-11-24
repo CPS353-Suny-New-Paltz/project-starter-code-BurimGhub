@@ -1,0 +1,30 @@
+option java_multiple_files = true;
+option java_package = "grpc.datastore";
+option java_outer_classname = "DataStoreProto";
+
+package datastore;
+
+// Process API (Data Store Service)
+service DataStoreService {
+  rpc ReadData (ReadRequest) returns (ReadResponse);
+  rpc WriteData (WriteRequest) returns (WriteResponse);
+}
+
+message ReadRequest {
+  required string source = 1;
+}
+
+message ReadResponse {
+  required bool success = 1;
+  repeated int32 numbers = 2;
+}
+
+message WriteRequest {
+  required string destination = 1;
+  repeated string results = 2;
+}
+
+message WriteResponse {
+  required bool success = 1;
+  optional string message = 2;
+}
