@@ -47,6 +47,7 @@ dependencies {
     implementation('com.google.code.gson:gson:2.13.1')
     implementation 'fr.inria.gforge.spoon:spoon-core:11.2.0'
     // gradle was not working with spoon dependencies, so I added them manually
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
     implementation "io.grpc:grpc-protobuf:${grpcVersion}"
     implementation "io.grpc:grpc-services:${grpcVersion}"
     implementation "io.grpc:grpc-stub:${grpcVersion}"
