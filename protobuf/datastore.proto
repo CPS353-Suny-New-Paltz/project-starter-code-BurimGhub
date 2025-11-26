@@ -8,6 +8,7 @@ package datastore;
 service DataStoreService {
   rpc ReadData (ReadRequest) returns (ReadResponse);
   rpc WriteData (WriteRequest) returns (WriteResponse);
+  rpc Shutdown (ShutdownRequest) returns (ShutdownResponse); 
 }
 
 message ReadRequest {
@@ -25,6 +26,14 @@ message WriteRequest {
 }
 
 message WriteResponse {
+  required bool success = 1;
+  optional string message = 2;
+}
+
+message ShutdownRequest {
+}
+
+message ShutdownResponse {
   required bool success = 1;
   optional string message = 2;
 }
