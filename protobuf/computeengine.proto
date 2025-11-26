@@ -9,6 +9,7 @@ service ComputeEngineService {
   rpc SubmitJob (JobRequest) returns (JobResponse);
   rpc GetJobStatus (JobStatusRequest) returns (JobResponse);
   rpc CancelJob (JobCancelRequest) returns (JobResponse);
+  rpc Shutdown (ShutdownRequest) returns (ShutdownResponse); 
 }
 
 message JobRequest {
@@ -31,4 +32,12 @@ message JobResponse {
   required bool success = 2;
   optional string message = 3;
   optional string status = 4;  // COMPLETED, FAILED, CANCELLED, etc.
+}
+
+message ShutdownRequest {
+}
+
+message ShutdownResponse {
+  required bool success = 1;
+  optional string message = 2;
 }
