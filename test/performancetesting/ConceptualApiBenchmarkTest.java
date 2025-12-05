@@ -32,13 +32,15 @@ public class ConceptualApiBenchmarkTest {
     }
 
     private long runBenchmark(ComputationApi api) {
-        long start = System.currentTimeMillis();
         // for jvm warmup
         for (int i = 1; i <= ITERATIONS; i++) {
             // cycle through a realistic range
             int n = (i % 20_000) + 1;
             api.compute(new ComputeRequest(n));
         }
+        
+        long start = System.currentTimeMillis();
+        
         for (int i = 1; i <= ITERATIONS; i++) {
             // cycle through a realistic range
             int n = (i % 20_000) + 1;
