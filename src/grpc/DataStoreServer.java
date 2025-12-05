@@ -22,7 +22,11 @@ public class DataStoreServer {
 	public void start(int port) throws IOException {
 		ProcessAPIImpl processAPI = new ProcessAPIImpl();
 
-		server = ServerBuilder.forPort(port).addService(new DataStoreServiceImpl(processAPI, this)).build().start();
+		server = ServerBuilder.forPort(port)
+				.addService(new DataStoreServiceImpl(processAPI, this))
+				.maxInboundMessageSize(64 * 1024 * 1024) // Updated to allow 64mb input
+				.build()
+				.start();
 
 		System.out.println("Data Store Server started on port " + port);
 
