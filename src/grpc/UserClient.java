@@ -193,7 +193,7 @@ class UserClient {
 				System.out.print("Enter numbers (comma-separated, e.g., 1,5,10,25): ");
 				String numbers = scanner.nextLine();
 
-				tempFile = File.createTempFile("input", ".txt");
+				tempFile = File.createTempFile("input", ".txt", new File(RESOURCES_DIR));
 				Files.write(tempFile.toPath(), numbers.getBytes());
 				inputPath = tempFile.getAbsolutePath();
 

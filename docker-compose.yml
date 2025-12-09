@@ -1,0 +1,40 @@
+services:
+  datastore:
+    build: .
+    container_name: datastore-server
+    command: ["grpc.DataStoreServer", "9091"]
+    ports:
+      - "9091:9091"
+    volumes:
+      - ./Resources:/app/Resources
+    networks:
+      - app-network
+
+  computeengine:
+    build: .
+    container_name: computeengine-server
+    command: ["grpc.ComputeEngineServer", "9090", "datastore", "9091"]
+    ports:
+      - "9090:9090"
+    depends_on:
+      - datastore
+    volumes:
+      - ./Resources:/app/Resources
+    networks:
+      - app-network
+
+  client:
+    build: .
+    container_name: user-client
+    command: ["grpc.UserClient", "computeengine", "9090"]
+    depends_on:
+      - computeengine
+    volumes:
+      - ./Resources:/app/Resources
+    networks:
+      - app-network
+    stdin_open: true
+    tty: true
+
+networks:
+  app-network:
