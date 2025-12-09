@@ -2,6 +2,8 @@ plugins {
     id 'java'
     id 'eclipse'
     id 'com.google.protobuf' version '0.9.4'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 def grpcVersion = '1.59.1'
@@ -61,3 +63,14 @@ dependencies {
 test {
     useJUnitPlatform()
     }
+    
+application {
+    mainClassName = 'grpc.UserClient'
+    }
+shadowJar {
+    mergeServiceFiles() 
+}
+// Make build create shadow JAR
+tasks.named('eclipse') {
+    dependsOn tasks.shadowJar
+}

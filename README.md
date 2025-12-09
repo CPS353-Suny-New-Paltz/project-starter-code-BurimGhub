@@ -47,3 +47,43 @@ We validated the performance improvements using two benchmark tests.
 ### Links to Benchmark Tests
 * **Unit Benchmark:** [ConceptualApiBenchmarkTest.java](https://github.com/CPS353-Suny-New-Paltz/project-starter-code-BurimGhub/blob/main/test/performancetesting/ConceptualApiBenchmarkTest.java)
 * **Integration Benchmark:** [ComputeEngineIntegrationBenchmarkTest.java](https://github.com/CPS353-Suny-New-Paltz/project-starter-code-BurimGhub/blob/main/test/performancetesting/ComputeEngineIntegrationBenchmarkTest.java)
+
+## Docker & Build Instructions
+
+This project uses Docker to containerize the gRPC services (Compute Engine, Data Store, and User Client). It utilizes the **Gradle Shadow Plugin** to create a "Fat Jar" that bundles all dependencies (including gRPC libraries) into a single executable. This approach ensures stability and prevents `NoClassDefFoundError` issues within the containerized environment. The system runs on **Java 21 (Eclipse Temurin)**.
+
+### How to Run
+
+Follow these steps in order to build and launch the system.
+
+**1. Generate Protobuf Files:**  
+Generate the gRPC Java code from the `.proto` definitions.
+```bash
+gradlew generateProto
+```
+**2. Build the Application:**  
+Run the Eclipse task. The build script is configured so that this command automatically triggers the creation of the Shadow Jar (Fat Jar) required for Docker.
+```Bash
+gradlew eclipse
+```
+**3. Start the Servers:**  
+Start the Data Store and Compute Engine services in the background. The --build flag ensures Docker picks up the latest JAR file.
+```Bash
+docker-compose up --build
+```
+*Wait until you see "Server started" logs for both the Data Store and Compute Engine.*  
+**4. Run the Client:**  
+Open a new terminal window to run the interactive client in the foreground.
+```Bash
+docker-compose run client
+```
+**_Note on File Input_**   
+*When using the "Enter a Path for input file" option in the Client:  
+*-Place your text file inside the Resources folder in your project root.*   
+*-Enter the path as: Resources/filename.txt*  
+*-Do not use absolute paths (e.g., C:\Users...).**  
+**Cleaning Up**  
+To stop all services and remove containers:
+```Bash
+docker-compose down
+```
